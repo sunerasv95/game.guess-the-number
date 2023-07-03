@@ -18,13 +18,17 @@ body {
     font-family: 'Slackey', cursive;
 }
 
-.jumbotron {
-    height: 30%;
+.jumbotron{
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    padding: 15px;
+}
+
+.jumbotron h1 {
+    font-size: 4rem;
+    font-family: 'Slackey', cursive;
 }
 
 .jumbotron p {
@@ -44,27 +48,18 @@ body {
     background-color: black;
 }
 
-
-.jumbotron h1 {
-    margin: 0;
-    padding: 20px 30px;
-
-    font-size: 4rem;
-    font-family: 'Slackey', cursive;
-}
-
-.hints {
+.hints{
     margin: 10px;
 }
 
-.hints span {
+.hints span{
     font-family: 'Slackey', cursive;
     font-size: 12px;
 }
 
 input {
     height: 40px;
-    width: 20%;
+    width: 30%;
     padding: 0 10px;
 
     background-color: black;
@@ -79,9 +74,9 @@ input:focus {
 }
 
 button {
-    width: 22%;
+    width: 30%;
     height: 40px;
-    margin: 15px 0;
+    margin: 10px 0;
 
     color: white;
     background-color: black;
@@ -98,14 +93,18 @@ button:hover {
 
 .summary {
     margin: 50px 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
     border-top: 1px gray solid;
 }
 
-.summary h2 {
+.summary h2{
     font-family: 'Slackey', cursive;
 }
 
-.summary p,
-span {
+.summary p, span {
     font-family: 'Slackey', cursive;
 }
