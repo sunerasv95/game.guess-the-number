@@ -4,10 +4,11 @@
 //   store it in the browser storage,
 //   this number is the hidden number that user need to guess
 //2. restore attempts and score values
+//3. set max score
 
 const game = {
   score: 0,
-  maxScore: 20,
+  maxScore: 0,
   generateHiddenNum: function () {
     this.hiddenNumber = Math.round(Math.random() * (20 - 1) + 1);
     console.log("hidden number ", this.hiddenNumber);
@@ -17,21 +18,22 @@ const game = {
 
 document.addEventListener("DOMContentLoaded", () => {
   game.generateHiddenNum();
-  const { score } = game;
+  const { score, maxScore } = game;
 
-  document.querySelector(".dtl-score span").textContent = score;
+  document.querySelector(".current-score span").textContent = score;
+  document.querySelector(".high-score span").textContent = maxScore;
 });
 
 //retrieve the entered number
 const guess = document.querySelector("input");
 
-let updateScore, hint;
+let updatedScore, updatedHighScore, hint;
 
 document.querySelector(".guess-btn").addEventListener("click", (e) => {
   const answer = Number(guess.value);
 
-  if (game.score >= game.maxScore) {
-    hint = "You reached maximum score of the game";
+  if (game.maxScore >= 20) {
+    hint = "You have reached maximum score of the game";
     guess.disabled = true;
   }
 
@@ -55,7 +57,7 @@ document.querySelector(".guess-btn").addEventListener("click", (e) => {
 
   //when the answer is correct.. add one to the  the score
   if (!correct) {
-    updateScore = reduceScore();
+    updatedScore = reduceScore();
 
     //give a hint
 
@@ -67,14 +69,17 @@ document.querySelector(".guess-btn").addEventListener("click", (e) => {
       hint = "Enter number and guess!";
     }
   } else {
-    updateScore = addScore();
+    updatedScore = addScore();
+    updatedHighScore = updateHighScore(updatedScore);
     game.generateHiddenNum();
     guess.value = "";
     hint = "Good job! Try another guess...";
+
+    document.querySelector(".high-score span").textContent = updatedHighScore;
   }
 
-  document.querySelector(".dtl-hint").textContent = hint;
-  document.querySelector(".dtl-score span").textContent = updateScore;
+  document.querySelector(".hint-text").textContent = hint;
+  document.querySelector(".current-score span").textContent = updatedScore;
 });
 
 const validateAnswer = (answer) => {
@@ -90,4 +95,14 @@ const addScore = () => {
 const reduceScore = () => {
   if (game["score"] > 0) game["score"] -= 1;
   return game.score;
+};
+
+const updateHighScore = (currScore) => {
+  let currentHighScore = game["maxScore"];
+
+  if (currScore > currentHighScore) {
+    game["maxScore"] = currScore;
+  }
+
+  return game.maxScore;
 };
