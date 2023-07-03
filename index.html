@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Guess the Number</title>
 </head>
+
 <body>
-    <h1>Guess the Number!</h1>
-    <section>
-        <div class="col">
-            <input type="number" class="input" name="guess">
-            <button class="btn guess-btn">Guess!</button>
+    <div class="jumbotron">
+        <h1>Guess the Number!</h1>
+        <p>Enter number between 1 -20 and hit the Guess button!</p>
+    </div>
+    <div class="container">
+        <div class="hints">
+            <span class="hint-text"></span>
         </div>
-        <div class="col">
-            <div>
-                <p class="dtl dtl-hint">Enter number and guess!</p>
-                <p class="dtl dtl-score">Score: <span></span></p>
-                <p class="dtl dtl-hiscore">Highest Score: <span>20</span></p>
+
+        <input type="number" class="input" name="guess" placeholder="Enter number" min="1" max="20">
+        <button class="btn guess-btn">Guess!</button>
+        <div class="summary">
+            <h2>Game summary</h2>
+            <div class="scores">
+                <p class="current-score">Score: <span></span></p>
+                <p class="high-score">Highest Score: <span></span></p>
             </div>
+            <p>Start guessing! Your score will be appeared here..</p>
         </div>
-    </section>
-<script src="./script.js"></script>
+    </div>
+    <script src="./script.js"></script>
 </body>
+
 </html>
